@@ -35,6 +35,7 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 
 # cannot install odbc wihtout the below because of https://github.com/docker-library/php/issues/103#issuecomment-160772802
 RUN set -x \
+    && cd /usr/src/ && tar -xf php.tar.xz && mv php-7.0.11 php \
     && cd /usr/src/php/ext/odbc \
     && phpize \
     && sed -ri 's@^ *test +"\$PHP_.*" *= *"no" *&& *PHP_.*=yes *$@#&@g' configure \
