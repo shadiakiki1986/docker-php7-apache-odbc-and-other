@@ -26,7 +26,7 @@ RUN pecl channel-update pecl.php.net && \
       zip yaml-beta mongodb \
       < /dev/null > /dev/null
 
-RUN docker-php-ext-enable yaml zip mcrypt mongodb
+RUN docker-php-ext-enable zip mcrypt mongodb # this is already installed with pecl install yaml
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php && \
