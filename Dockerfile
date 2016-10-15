@@ -60,6 +60,13 @@ RUN php -r "if (new Redis() == true){ echo \"OK \r\n\"; }"
 # Install php sockets extension
 RUN docker-php-ext-install sockets > /dev/null
 
+# check that all were indeed installed
+RUN php -i|grep mongo \
+  && php -i | grep zip \
+  && php -i | grep odbc \
+  && php -i | grep redis \
+  && php -i | grep sockets
+
 # Fix timezone: http://serverfault.com/a/683651
 ENV TZ=Asia/Beirut
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
