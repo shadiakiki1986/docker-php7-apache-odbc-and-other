@@ -7,6 +7,7 @@ List of main php extensions included
 * zip
 * odbc
 * redis
+* [sockets](http://php.net/manual/en/book.sockets.php)
 
 List of other installed tools
 * tdsodbc

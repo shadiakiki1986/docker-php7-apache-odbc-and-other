@@ -57,6 +57,9 @@ RUN cd /tmp && \
 # check that redis indeed got installed
 RUN php -r "if (new Redis() == true){ echo \"OK \r\n\"; }" 
 
+# Install php sockets extension
+RUN docker-php-ext-install sockets > /dev/null
+
 # Fix timezone: http://serverfault.com/a/683651
 ENV TZ=Asia/Beirut
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
