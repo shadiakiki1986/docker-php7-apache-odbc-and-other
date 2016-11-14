@@ -5,7 +5,12 @@ Published at [docker hub](https://hub.docker.com/r/shadiakiki1986/php7-apache-od
 
 List of main php extensions included
 * mongodb
-* yaml (broken as of 2016-10-15 and has been a mess to get to work, e.g. resorting to `yaml-beta` and still not working .. perhaps just use [symfony/yaml](https://github.com/symfony/yaml) instead?)
+* yaml
+ * 2016-10
+  * broken as of 2016-10-15 and has been a mess to get to work
+  * e.g. resorting to `yaml-beta` and still not working
+  * perhaps just use [symfony/yaml](https://github.com/symfony/yaml) instead?
+ * 2016-11-14 using yaml-2.0.0
 * zip
 * odbc
 * redis

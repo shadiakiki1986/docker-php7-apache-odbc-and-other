@@ -21,12 +21,13 @@ RUN apt-get -qq update > /dev/null && \
 # install php extensions
 RUN docker-php-ext-install mcrypt mbstring bcmath > /dev/null
 
+# 2016-11-14 move to yaml-2.0.0 after using yaml-beta from http://stackoverflow.com/questions/34169346/pecl-yaml
 RUN pecl channel-update pecl.php.net && \
     pecl install \
-      zip yaml-beta mongodb \
+      zip yaml-2.0.0 mongodb \
       < /dev/null > /dev/null
 
-RUN docker-php-ext-enable zip mcrypt mongodb # this is already installed with pecl install yaml
+RUN docker-php-ext-enable zip mcrypt mongodb # no need for yaml since already installed with pecl. What about mongo and zip?
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php && \
