@@ -10,7 +10,7 @@ List of main php extensions included
   * broken as of 2016-10-15 and has been a mess to get to work
   * e.g. resorting to `yaml-beta` and still not working
   * perhaps just use [symfony/yaml](https://github.com/symfony/yaml) instead?
- * 2016-11-14 using yaml-2.0.0
+ * 2016-11-14 using yaml-2.0.0 and is ok
 * zip
 * odbc
 * redis

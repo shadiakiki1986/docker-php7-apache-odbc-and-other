@@ -27,7 +27,9 @@ RUN pecl channel-update pecl.php.net && \
       zip yaml-2.0.0 mongodb \
       < /dev/null > /dev/null
 
-RUN docker-php-ext-enable zip mcrypt mongodb # no need for yaml since already installed with pecl. What about mongo and zip?
+# 2016-09-xx: no need for yaml since already installed with pecl. What about mongo and zip?
+# 2016-11-14: despite the note above, the enable below is needed for yaml (as well as mongo and zip)
+RUN docker-php-ext-enable zip mcrypt mongodb yaml
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php && \
@@ -66,7 +68,8 @@ RUN php -i|grep mongo \
   && php -i | grep zip \
   && php -i | grep odbc \
   && php -i | grep redis \
-  && php -i | grep sockets
+  && php -i | grep sockets \
+  && php -i | grep yaml
 
 # Fix timezone: http://serverfault.com/a/683651
 ENV TZ=Asia/Beirut
