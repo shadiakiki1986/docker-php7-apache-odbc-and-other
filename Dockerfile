@@ -75,3 +75,5 @@ RUN php -i|grep mongo \
 ENV TZ=Asia/Beirut
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# make the composer cache into a shared volume for persistence and sharing among derived images
+VOLUME /root/.composer/cache
