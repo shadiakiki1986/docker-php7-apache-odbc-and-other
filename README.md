@@ -28,3 +28,23 @@ For odbc:
 COPY odbc.ini /etc/
 COPY odbcinst.ini /etc/
 ```
+
+# Building the image
+
+`docker build . --build-arg APT_PROXY="http://serveriprunningaptcacher:3142" -t shadiakiki1986/php7-apache-odbc-and-other:latest`
+
+or pull from docker hub with
+
+`docker pull shadiakiki1986/php7-apache-odbc-and-other:latest`
+
+Optionally, build with apt cache as proxy
+
+```
+docker run -d -p 3142:3142 -v /var/cache/apt-cacher:/var/cache/apt-cacher clue/apt-cacher
+docker build . --build-arg APT_PROXY="http://localhost:3142" -t shadiakiki1986/php7-apache-odbc-and-other:latest
+```
+
+To check the logs of `clue/apt-cacher` to verify that the cache is being hit
+
+- `docker ps|grep cache` and copy the container ID
+- `docker exec -it <container ID> tail -f /var/log/apt-cacher/access.log`
